@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [RetryFailedTests]">
   <listeners>
-    <listener class-name="Tests.AnnotationTransformer"/>
+    <listener class-name="Listeners.AnnotationTransformer"/>
   </listeners>
   <test name="RetryMulitple(failed)">
     <classes>

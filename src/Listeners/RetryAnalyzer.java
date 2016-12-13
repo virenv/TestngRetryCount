@@ -25,9 +25,11 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 	@Override
 	public boolean retry(ITestResult result) {
 		
+		// check if the test method had RetryCountIfFailed annotation
 		RetryCountIfFailed annotation = result.getMethod().getConstructorOrMethod().getMethod()
 				.getAnnotation(RetryCountIfFailed.class);
-		if(counter < annotation.value())
+		// based on the value of annotation see if test needs to be rerun
+		if((annotation != null) && (counter < annotation.value()))
 		{
 			counter++;
 			return true;
