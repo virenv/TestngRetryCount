@@ -1,6 +1,7 @@
 package Listeners;
 
 import org.testng.IRetryAnalyzer;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 
 import CustomAnnotations.RetryCountIfFailed;
@@ -28,6 +29,14 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 		// check if the test method had RetryCountIfFailed annotation
 		RetryCountIfFailed annotation = result.getMethod().getConstructorOrMethod().getMethod()
 				.getAnnotation(RetryCountIfFailed.class);
+		
+		// All tests that are retried after failures will appear in the skipped tests
+		// list. Which causes TestNg to report those retry attempts as skipped tests.
+		// Here we will explicitly remove the retry test from the skipped tests list so that
+		// TestNg doesn't report retry attempts as skipped attempts.
+		// The line below simply does that.
+		result.getTestContext().getSkippedTests().removeResult(result.getMethod());
+		
 		// based on the value of annotation see if test needs to be rerun
 		if((annotation != null) && (counter < annotation.value()))
 		{

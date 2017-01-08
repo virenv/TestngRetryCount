@@ -4,6 +4,11 @@
   <listeners>
     <listener class-name="Listeners.AnnotationTransformer"/>
   </listeners>
+  <test name="RetryMulitple">
+    <classes>
+      <class name="Tests.Test001"/>
+    </classes>
+  </test> <!-- RetryMulitple -->
   <test name="RetryMulitple(failed)">
     <classes>
       <class name="Tests.Test001">

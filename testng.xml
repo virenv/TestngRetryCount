@@ -3,6 +3,7 @@
 <suite name="RetryFailedTests" verbose="1" >
  <listeners>
         <listener class-name="Listeners.AnnotationTransformer"/>
+<!--         <listener class-name="Listeners.TestListener"/> -->
   </listeners>
   <test name="RetryMulitple">
     <classes>
